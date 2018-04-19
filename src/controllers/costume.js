@@ -1,4 +1,4 @@
-const model = require("../models/main.js")
+const model = require("../models/costume.js")
 
 getAll = (req, res, next) => {
   // console.log("controller speaking")
@@ -45,8 +45,23 @@ deleteCostume = (req, res, next) => {
   }
 }
 
+createCostume = (req, res, next) => {
+  console.log("controller speaking!!!")
+  let name = req.body.name
+  let price = req.body.price
+  let tag = req.body.tag
+  const newCostume = model.createCostume(name, price, tag)
+
+  if (newCostume.error) next(result)
+  else
+    res.status(200).json({
+      newCostume
+    })
+}
+
 module.exports = {
   getAll,
   getById,
-  deleteCostume
+  deleteCostume,
+  createCostume
 }

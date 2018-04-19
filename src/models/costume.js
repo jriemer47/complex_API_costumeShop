@@ -13,7 +13,7 @@ getById = id => {
 }
 
 deleteCostume = id => {
-  console.log("models speaking!!!")
+  // console.log("models speaking!!!")
   const costume = database.find(database => database.id === id)
 
   if (!costume) {
@@ -32,8 +32,29 @@ deleteCostume = id => {
   return database
 }
 
+createCostume = (name, price, tags) => {
+  console.log("model speaking!!!")
+  let result
+  if (!name || !price || !tags) {
+    result = {
+      status: 400,
+      message: "Please add all content"
+    }
+    return result
+  }
+  let newCostume = {
+    id: uuid(),
+    name,
+    price,
+    tag: []
+  }
+  database.push(newCostume)
+  return newCostume
+}
+
 module.exports = {
   getAll,
   getById,
-  deleteCostume
+  deleteCostume,
+  createCostume
 }

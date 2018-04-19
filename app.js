@@ -13,7 +13,7 @@ if (process.env.NODE_ENV !== "test") app.use(morgan("dev"))
 app.use(bodyParser.json())
 app.use(cors())
 
-const costumesRoutes = require("./src/routes/main.js")
+const costumesRoutes = require("./src/routes/costume.js")
 app.use("/costumes", costumesRoutes)
 
 app.use((err, req, res, next) => {
