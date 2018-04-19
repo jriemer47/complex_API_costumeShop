@@ -1,0 +1,14 @@
+[
+  {
+    "id": "1",
+    "name": "batman",
+    "price": "$1.99",
+    "tags": [{ "id": "1", "name": "btag", "color": "#000000" }]
+  },
+  {
+    "id": "2",
+    "name": "superman",
+    "price": "$2.99",
+    "tag": [{ "id": "2", "name": "supertag", "color": "#FF0000" }]
+  }
+]
