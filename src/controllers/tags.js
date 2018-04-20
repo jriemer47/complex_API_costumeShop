@@ -30,7 +30,6 @@ deleteTag = (req, res, next) => {
 }
 
 createTag = (req, res, next) => {
-  console.log("controllers working")
   const id = req.params.id
   const tagId = req.params.tagId
   const color = req.body.color
@@ -45,8 +44,26 @@ createTag = (req, res, next) => {
   }
 }
 
+updateTag = (req, res, next) => {
+  console.log("controller speaking!!")
+  const id = req.params.id
+  const tagId = req.params.tagId
+  const updatedTag = model.updateTag(id, tagId, req.body)
+
+  if (!updatedTag) {
+    return next({
+      status: 404,
+      message: `Could not find tag with id of ${tagId}`
+    })
+  }
+  res.status(200).json({
+    updatedTag
+  })
+}
+
 module.exports = {
   getTag,
   deleteTag,
-  createTag
+  createTag,
+  updateTag
 }

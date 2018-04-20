@@ -29,7 +29,6 @@ deleteTag = (id, tagId) => {
 }
 
 createTag = (id, tagId, color, name) => {
-  console.log("models working")
   let result
   if (!id || !tagId) {
     result = {
@@ -51,8 +50,35 @@ createTag = (id, tagId, color, name) => {
   return newTag
 }
 
+updateTag = (id, tagId, body) => {
+  const selectedCostume = database.find(costume => costume.id === id)
+  const tagToUpdate = selectedCostume.tag.find(tag => tag.id === tagId)
+
+  let index = selectedCostume.tag.indexOf(tagToUpdate)
+  let error = []
+  let { color, name } = body
+
+  let response
+  if (!color || !name) {
+    error.push("please add new content")
+    response = {
+      error
+    }
+  } else {
+    const freshTag = {
+      tagId,
+      color,
+      name
+    }
+    selectedCostume.tag[index] = freshTag
+    response = freshTag
+  }
+  return response
+}
+
 module.exports = {
   getTag,
   deleteTag,
-  createTag
+  createTag,
+  updateTag
 }
