@@ -16,6 +16,9 @@ app.use(cors())
 const costumesRoutes = require("./src/routes/costume.js")
 app.use("/costumes", costumesRoutes)
 
+// const tagRoutes = require("./src/routes/tags.js")
+// app.use("/costumes/:id/tag", tagRoutes)
+
 app.use((err, req, res, next) => {
   res.status(err.status).json(err)
 })

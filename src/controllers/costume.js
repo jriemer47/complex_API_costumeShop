@@ -1,4 +1,4 @@
-const model = require("../models/costume.js")
+const model = require("../models/costume")
 
 getAll = (req, res, next) => {
   // console.log("controller speaking")
@@ -33,7 +33,7 @@ getById = (req, res, next) => {
 }
 
 deleteCostume = (req, res, next) => {
-  console.log("controller speaking!!!")
+  // console.log("controller speaking!!!")
   const id = req.params.id
   const costumes = model.deleteCostume(id)
 

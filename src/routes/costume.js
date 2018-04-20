@@ -5,18 +5,18 @@ const tagCtrl = require("../controllers/tags.js")
 
 // working
 router.get("/", costumeCtrl.getAll)
-router.get("/", tagCtrl.getAll)
+router.get("/:id/tag", tagCtrl.getTag)
 // working
 router.get("/:id", costumeCtrl.getById)
-router.get("/:id", tagCtrl.getById)
+// router.get("/:id", tagCtrl.getById)
 // working
 router.delete("/:id", costumeCtrl.deleteCostume)
-router.delete("/:id", tagCtrl.deleteTag)
+// router.delete("/:id", tagCtrl.deleteTag)
 // working
 router.post("/", costumeCtrl.createCostume)
-router.post("/", tagCtrl.createTag)
+// router.post("/", tagCtrl.createTag)
 
 router.put("/:id", costumeCtrl.updateCostume)
-router.put("/:id", tagCtrl.updateTag)
+// router.put("/:id", tagCtrl.updateTag)
 
 module.exports = router
