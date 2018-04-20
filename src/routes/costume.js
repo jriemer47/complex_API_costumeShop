@@ -1,14 +1,22 @@
 const express = require("express")
 const router = express.Router()
-const ctrl = require("../controllers/costume.js")
+const costumeCtrl = require("../controllers/costume.js")
+const tagCtrl = require("../controllers/tags.js")
 
 // working
-router.get("/", ctrl.getAll)
+router.get("/", costumeCtrl.getAll)
+router.get("/", tagCtrl.getAll)
 // working
-router.get("/:id", ctrl.getById)
+router.get("/:id", costumeCtrl.getById)
+router.get("/:id", tagCtrl.getById)
 // working
-router.delete("/:id", ctrl.deleteCostume)
+router.delete("/:id", costumeCtrl.deleteCostume)
+router.delete("/:id", tagCtrl.deleteTag)
+// working
+router.post("/", costumeCtrl.createCostume)
+router.post("/", tagCtrl.createTag)
 
-router.post("/", ctrl.createCostume)
+router.put("/:id", costumeCtrl.updateCostume)
+router.put("/:id", tagCtrl.updateTag)
 
 module.exports = router

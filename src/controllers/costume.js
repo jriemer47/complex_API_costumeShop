@@ -46,7 +46,7 @@ deleteCostume = (req, res, next) => {
 }
 
 createCostume = (req, res, next) => {
-  console.log("controller speaking!!!")
+  // console.log("controller speaking!!!")
   let name = req.body.name
   let price = req.body.price
   let tag = req.body.tag
@@ -59,9 +59,25 @@ createCostume = (req, res, next) => {
     })
 }
 
+updateCostume = (req, res, next) => {
+  console.log("controller speaking!!!")
+  const costume = model.updateCostume(req.params.id, req.body)
+
+  if (!costume) {
+    return next({
+      status: 404,
+      message: `Could not find costume with id of ${id}`
+    })
+  }
+  res.status(200).json({
+    costume
+  })
+}
+
 module.exports = {
   getAll,
   getById,
   deleteCostume,
-  createCostume
+  createCostume,
+  updateCostume
 }

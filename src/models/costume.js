@@ -52,9 +52,37 @@ createCostume = (name, price, tags) => {
   return newCostume
 }
 
+updateCostume = (id, body) => {
+  console.log("models speaking!!!!")
+  const costume = database.find(costume => costume.id === id)
+
+  let index = database.indexOf(costume)
+  let error = []
+  let { name, price, tag } = body
+
+  let response
+  if (!name || !price || !tag) {
+    error.push("Please add updates")
+    response = {
+      error
+    }
+  } else {
+    const updatedCostume = {
+      id,
+      name: body.name,
+      price: body.price,
+      tag: []
+    }
+    database[index] = updatedCostume
+    response = updatedCostume
+  }
+  return response
+}
+
 module.exports = {
   getAll,
   getById,
   deleteCostume,
-  createCostume
+  createCostume,
+  updateCostume
 }
