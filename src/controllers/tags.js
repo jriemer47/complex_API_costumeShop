@@ -1,7 +1,7 @@
 const model = require("../models/tags")
 
 getTag = (req, res, next) => {
-  console.log("hello from controllers")
+  // console.log("hello from controllers")
   const id = req.params.id
   const tags = model.getTag(id)
 
@@ -16,6 +16,20 @@ getTag = (req, res, next) => {
   })
 }
 
+deleteTag = (req, res, next) => {
+  console.log("controllers bitch!!")
+  const id = req.params.id
+  const tag = model.deleteTag(id)
+
+  if (tag.error) next(tag)
+  else {
+    res.status(200).json({
+      tag
+    })
+  }
+}
+
 module.exports = {
-  getTag
+  getTag,
+  deleteTag
 }
