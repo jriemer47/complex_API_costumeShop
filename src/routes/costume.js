@@ -9,10 +9,10 @@ router.get("/:id", costumeCtrl.getById)
 router.get("/:id/tag", tagCtrl.getTag)
 
 router.delete("/:id", costumeCtrl.deleteCostume)
-router.delete("/:id/tag", tagCtrl.deleteTag)
+router.delete("/:id/tag/:tagId", tagCtrl.deleteTag)
 // working
 router.post("/", costumeCtrl.createCostume)
-// router.post("/", tagCtrl.createTag)
+router.post("/:id/tag/:tagId", tagCtrl.createTag)
 
 router.put("/:id", costumeCtrl.updateCostume)
 // router.put("/:id", tagCtrl.updateTag)

@@ -33,7 +33,7 @@ getById = (req, res, next) => {
 }
 
 deleteCostume = (req, res, next) => {
-  // console.log("controller speaking!!!")
+  console.log("controller costume!!!")
   const id = req.params.id
   const costumes = model.deleteCostume(id)
 

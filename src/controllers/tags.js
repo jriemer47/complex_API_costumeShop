@@ -17,9 +17,9 @@ getTag = (req, res, next) => {
 }
 
 deleteTag = (req, res, next) => {
-  console.log("controllers bitch!!")
   const id = req.params.id
-  const tag = model.deleteTag(id)
+  const tagId = req.params.tagId
+  const tag = model.deleteTag(id, tagId)
 
   if (tag.error) next(tag)
   else {
@@ -29,7 +29,24 @@ deleteTag = (req, res, next) => {
   }
 }
 
+createTag = (req, res, next) => {
+  console.log("controllers working")
+  const id = req.params.id
+  const tagId = req.params.tagId
+  const color = req.body.color
+  const name = req.body.name
+  const newTag = model.createTag(id, tagId, color, name)
+
+  if (newTag.error) next(result)
+  else {
+    res.status(200).json({
+      newTag
+    })
+  }
+}
+
 module.exports = {
   getTag,
-  deleteTag
+  deleteTag,
+  createTag
 }
